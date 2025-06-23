@@ -14,7 +14,6 @@ import {
   Send,
   Twitter,
   Instagram,
-  MessageCircle,
   Menu,
   X,
   Download,
