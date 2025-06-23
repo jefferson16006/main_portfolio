@@ -102,7 +102,7 @@ export default function Portfolio() {
       description:
         "A secure and modular banking API built to simulate core financial operations such as account creation, fund transfers, transaction history, and authentication. Designed with RESTful principles, role-based access control, and proper error handling for production readiness.",
       tech: ["Node.js", "Express", "MongoDB", "JWT", "Mongoose"],
-      github: "https://github.com/your-username/first-bank-api",
+      github: "https://github.com/jefferson16006/firstbank_api",
     },
     {
       title: "Jobs API",
@@ -431,28 +431,52 @@ export default function Portfolio() {
             <div className="max-w-2xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700">
                 <CardContent className="p-6 sm:p-8">
-                  <form className="space-y-4 sm:space-y-6">
+                  <form
+                    className="space-y-4 sm:space-y-6"
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const form = e.currentTarget;
+                      const name = (form.elements.namedItem("name") as HTMLInputElement)?.value || "";
+                      const email = (form.elements.namedItem("email") as HTMLInputElement)?.value || "";
+                      const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
+
+                      const subject = encodeURIComponent(`Message from ${name}`);
+                      const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+                      const mailtoLink = `mailto:jeffersonchukwu10@gmail.com?subject=${subject}&body=${body}`;
+
+                      window.location.href = mailtoLink;
+                    }}
+                  >
                     <div>
                       <Input
+                        name="name"
                         placeholder="Your Name"
+                        required
                         className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-purple-500 h-12"
                       />
                     </div>
                     <div>
                       <Input
                         type="email"
+                        name="email"
                         placeholder="Your Email"
+                        required
                         className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-purple-500 h-12"
                       />
                     </div>
                     <div>
                       <Textarea
+                        name="message"
                         placeholder="Your Message"
                         rows={5}
+                        required
                         className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-purple-500"
                       />
                     </div>
-                    <Button className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white h-12">
+                    <Button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white h-12"
+                    >
                       <Send className="w-4 h-4 mr-2" />
                       Send Message
                     </Button>
@@ -487,10 +511,6 @@ export default function Portfolio() {
                         <span className="hidden sm:inline">Instagram</span>
                       </Button>
                     </a>
-                    {/* <Button variant="ghost" size="sm" className="text-gray-400 hover:text-green-400 text-xs sm:text-sm">
-                      <MessageCircle className="w-4 h-4 mr-1 sm:mr-2" />
-                      <span className="hidden sm:inline">WhatsApp</span>
-                    </Button> */}
                   </div>
                 </CardContent>
               </Card>
