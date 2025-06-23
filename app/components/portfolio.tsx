@@ -442,7 +442,7 @@ export default function Portfolio() {
 
                       const subject = encodeURIComponent(`Message from ${name}`);
                       const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
-                      const mailtoLink = `mailto:jeffersonchukwu10@gmail.com?subject=${subject}&body=${body}`;
+                      const mailtoLink = `mailto:jeffersonchukwu2006@gmail.com?subject=${subject}&body=${body}`;
 
                       window.location.href = mailtoLink;
                     }}
