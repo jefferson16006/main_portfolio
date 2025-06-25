@@ -14,6 +14,7 @@ import {
   Send,
   Twitter,
   Instagram,
+  Mail,
   Menu,
   X,
   Download,
@@ -425,9 +426,12 @@ export default function Portfolio() {
           <div
             className={`transition-all duration-1000 delay-500 ${isVisible.contact ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Get In Touch
-            </h2>
+            <div className="flex justify-center gap-2">
+              <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Get In Touch
+              </h2>
+              <Mail className="w-15 h-10 text-purple-400 max-sm:h-9 max-sm:w-7"/>
+            </div>
             <div className="max-w-2xl mx-auto">
               <Card className="bg-gray-800/50 border-gray-700">
                 <CardContent className="p-6 sm:p-8">
@@ -441,7 +445,7 @@ export default function Portfolio() {
                       const message = (form.elements.namedItem("message") as HTMLTextAreaElement)?.value || "";
 
                       const subject = encodeURIComponent(`Message from ${name}`);
-                      const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
+                      const body = encodeURIComponent(`${message}`);
                       const mailtoLink = `mailto:jeffersonchukwu2006@gmail.com?subject=${subject}&body=${body}`;
 
                       window.location.href = mailtoLink;
@@ -467,7 +471,7 @@ export default function Portfolio() {
                     <div>
                       <Textarea
                         name="message"
-                        placeholder="Your Message"
+                        placeholder="Your Email Message"
                         rows={5}
                         required
                         className="bg-gray-900/50 border-gray-600 text-white placeholder-gray-400 focus:border-purple-500"
